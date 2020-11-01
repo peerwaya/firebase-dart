@@ -7,6 +7,7 @@ import 'firestore.dart';
 import 'func.dart';
 import 'interop/es6_interop.dart';
 import 'interop/firebase_interop.dart' show FirebaseError;
+import 'interop/firebase_interop.dart';
 import 'interop/firestore_interop.dart' show TimestampJsImpl;
 import 'interop/js_interop.dart' as js;
 
@@ -183,6 +184,18 @@ class _FirebaseErrorWrapper extends Error implements FirebaseError {
 
   @override
   String get stack => util.getProperty(_source, 'stack');
+
+  @override
+  AuthCredential get credential => util.getProperty(_source, 'credential');
+
+  @override
+  String get email => util.getProperty(_source, 'email');
+
+  @override
+  String get phoneNumber => util.getProperty(_source, 'phoneNumber');
+
+  @override
+  String get tenantId => util.getProperty(_source, 'tenantId');
 
   @override
   String toString() => 'FirebaseError: $message ($code)';

@@ -124,10 +124,48 @@ abstract class FirebaseError {
   external String get message;
   external String get name;
   external String get stack;
+  external AuthCredential get credential;
+  external String get email;
+  external String get phoneNumber;
+  external String get tenantId;
 
   /// Not part of the core JS API, but occasionally exposed in error objects.
   external Object get serverResponse;
 }
+
+/// A structure for [AuthCredential].
+@JS()
+@anonymous
+class AuthCredential {
+  external String get providerId;
+  external String get signInMethod;
+  external String get secret;
+  external String get idToken;
+  external String get accessToken;
+  external String get rawNonce;
+
+  external factory AuthCredential({
+    String providerId,
+    String signInMethod,
+    String secret,
+    String idToken,
+    String accessToken,
+    String rawNonce,
+  });
+}
+
+// /// AuthError is a subclass of the FirebaseError.
+// /// It contains additional properties related to the auth state.
+// ///
+// /// See: <https://firebase.google.com/docs/reference/js/firebase.auth.AuthError>.
+// @JS()
+// @anonymous
+// abstract class AuthError extends FirebaseError {
+//   external AuthCredential get credential;
+//   external String get email;
+//   external String get phoneNumber;
+//   external String get tenantId;
+// }
 
 /// A structure for [User]'s user profile.
 @JS()
